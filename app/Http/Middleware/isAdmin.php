@@ -15,10 +15,15 @@ class isAdmin
      */
     public function handle($request, Closure $next)
     {
+      if (auth()->guest())
+      {
+        return redirect('login');
+      }
       if (auth()->user()->isAdmin())
       {
         return $next($request);
       }
+
       return redirect('home');
     }
 }
