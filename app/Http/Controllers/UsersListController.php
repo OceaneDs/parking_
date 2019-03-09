@@ -2,21 +2,16 @@
 
 namespace Parking\Http\Controllers;
 
+use Parking\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
 
 class UsersListController extends Controller
 {
   public function index()
   {
-    $users = DB::table('users')
-    ->select('*')
-    -> get();
+    $users = User::get();
 
-    return view('users_list', [
-      'users' =>$users,
-    ]);
+    return view('users_list', compact('users'));
   }
-
 }

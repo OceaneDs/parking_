@@ -33,14 +33,24 @@
                       <br>
                       Numéros de téléphone : {{ $user->phone }}
                       <br>
-                      Validé : {{ $user->valid }}
-                      <br>
                       Rang : {{ $user->type }}
                       <br>
                       Créé le <?php $str = $user->created_at ?> {{date("d/m/Y", strtotime($str))}}
                       <br>
                       Dernière modification le <?php $str = $user->updated_at ?> {{date("d/m/Y", strtotime($str))}}
+                      <br>
 
+                      @if ($user->valid)
+                        <button type="button" class="btn btn-outline-success"  href="{{ route('validation')}}" onclick="event.preventDefault(); document.getElementById('valid-user').submit();" >Validé</button>
+
+                      @else
+                        <button type="button" class="btn btn-outline-primary" href="{{ route('validation')}}" onclick="event.preventDefault(); document.getElementById('valid-user').submit();"  >Non Validé</button>
+                      @endif
+
+                      <a href="update_user?user_id={{$user->id}}">modifier</a>
+
+                      <button type="button" class="btn btn-outline-danger" onclick="event.preventDefault(); document.getElementById('valid-user').submit();"  >Supprimer</button>
+                      <br>
                     @endforeach
 
                 </div>
