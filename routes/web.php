@@ -20,7 +20,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::group([ 'is_admin' => 'App\Http\Middleware\IsAdmin' ],
+Route::group([ 'middleware' => ['is_admin']],
 function ()
 {
   Route::get('/admin', 'AdminController@admin')
@@ -29,12 +29,15 @@ function ()
   Route::get('/users_list', 'UsersListController@index')
       ->name('users_list');
 
-  Route::post('validation', 'ValidationController@valid')
-      ->name('validation');
+  Route::get('/users_list/{user}/validation', 'UsersListController@validation')
+      ->name('userValid');
 
-  Route::get('/update_user', 'UpdateUserController@index')
+  Route::get('/update_user/{user}/affUpdate', 'UsersListController@affUpdate')
       ->name('update_user');
 
-  Route::post('/update', 'UpdateUserController@update')
+  Route::post('/update_user/{user}/affUpdate', 'UsersListController@affUpdate')
+          ->name('update_user');
+
+  Route::post('/update/{user}/update', 'UsersListController@update')
       ->name('update');
 });

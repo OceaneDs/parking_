@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Dashboard</div>
+                <div class="card-header">Liste des utilisateurs</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -40,17 +40,16 @@
                       Dernière modification le <?php $str = $user->updated_at ?> {{date("d/m/Y", strtotime($str))}}
                       <br>
 
+                      <h5>
                       @if ($user->valid)
-                        <button type="button" class="btn btn-outline-success"  href="{{ route('validation')}}" onclick="event.preventDefault(); document.getElementById('valid-user').submit();" >Validé</button>
+                        <a class="text-success"  href="{{ route('userValid', $user) }}" > Validé </a>
 
                       @else
-                        <button type="button" class="btn btn-outline-primary" href="{{ route('validation')}}" onclick="event.preventDefault(); document.getElementById('valid-user').submit();"  >Non Validé</button>
+                        <a class="text-muted" href="{{ route('userValid', $user->id) }}" > Non Validé </a>
                       @endif
 
-                      <a href="update_user?user_id={{$user->id}}">modifier</a>
-
-                      <button type="button" class="btn btn-outline-danger" onclick="event.preventDefault(); document.getElementById('valid-user').submit();"  >Supprimer</button>
-                      <br>
+                      <a href="{{ route('update_user', $user) }}"> Modifier </a>
+                      </h5> <br>
                     @endforeach
 
                 </div>
