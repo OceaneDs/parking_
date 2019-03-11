@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace Parking\Http\Controllers\Auth;
 
-use App\User;
-use App\Http\Controllers\Controller;
+use Parking\User;
+use Parking\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -52,9 +52,9 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'fname' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:6', 'confirmed'],
+            'password' => ['required', 'string', 'min:6', 'max:30', 'confirmed'],
             'adress' => ['required', 'string', 'max:255'],
-            'zip_code' => ['required', 'digits:5', 'max:255'],
+            'zip_code' => ['required', 'digits:5'],
             'city' => ['required', 'string', 'max:255'],
             'phone' => ['required', 'digits:10', 'max:255'],
         ]);
@@ -64,7 +64,7 @@ class RegisterController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return \App\User
+     * @return \Parking\User
      */
     protected function create(array $data)
     {
@@ -77,7 +77,7 @@ class RegisterController extends Controller
             'zip_code' => $data['zip_code'],
             'city' => $data['city'],
             'phone' => $data['phone'],
-            'rigth' => 'membre',
+            'type' => User::DEFAULT_TYPE,
         ]);
     }
 }

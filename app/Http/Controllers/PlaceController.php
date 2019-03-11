@@ -1,9 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Parking\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Place;
+use Illuminate\Support\Facades\DB;
+
+use Parking\Place;
 
 class PlaceController extends Controller
 {
@@ -18,6 +20,16 @@ class PlaceController extends Controller
   {
     $places = Place::all();
     return view('place',['places'=> $places]);
+  }
+  public function disponibilite(Place $place)
+  {
+    if($place->dispo)
+    $place->dispo = false;
+    else
+    $place->dispo =true;
+
+    $place ->save();
+     return redirect('/listPlaces');
   }
 
 }
