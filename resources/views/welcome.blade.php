@@ -33,7 +33,7 @@
             .position-ref {
                 position: relative;
             }
-
+;
             .top-right {
                 position: absolute;
                 right: 10px;
