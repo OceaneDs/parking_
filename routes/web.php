@@ -45,4 +45,7 @@ function ()
 
   Route::get('/listPlaces', 'PlaceController@listPlaces')
       ->name('/listPlaces');
+
+  Route::get('/listPlaces/{place}/disponibilite', 'PlaceController@disponibilite')
+      ->name('listPlaces');
 });

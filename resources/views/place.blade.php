@@ -17,9 +17,9 @@
             <td>{{$place->numéro}}</td>
             <td>
               @if ($place->dispo)
-                <a class="text-success"  href="{{ route('/listPlaces', $place) }}" > Indisponible </a>
+                <a class="text-success"  href="{{ route('listPlaces', $place) }}" > Disponible </a>
               @else
-                <a class="text-success"  href="{{ route('/listPlaces', $place) }}" > Disponible </a>
+                <a class="text-danger"  href="{{ route('listPlaces', $place) }}" > Indisponible </a>
               @endif
             </td>
           </tr>
