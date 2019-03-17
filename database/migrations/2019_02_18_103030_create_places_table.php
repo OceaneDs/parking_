@@ -13,7 +13,8 @@ class CreatePlacesTable extends Migration
      */
     public function up()
     {
-        Schema::create('places', function (Blueprint $table) {
+        Schema::create('places', function (Blueprint $table)
+        {
             $table->increments('id');
             $table->integer('numéro');
             $table->boolean('dispo');

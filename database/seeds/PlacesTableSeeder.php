@@ -12,11 +12,11 @@ class PlacesTableSeeder extends Seeder
     public function run()
     {
       DB::table('places')->insert([
-            'dispo'=>1,
+            'dispo'=> 1,
             'numéro'=> '1',
         ]);
       DB::table('places')->insert([
-              'dispo'=>0,
+              'dispo'=> 0,
               'numéro'=>'2',
           ]);
     }

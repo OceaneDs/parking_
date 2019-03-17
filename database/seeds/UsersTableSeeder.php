@@ -22,6 +22,7 @@ class UsersTableSeeder extends Seeder
           'phone' => '1020304050',
           'valid' => 1,
           'type' => 'admin',
+          'rank' => NULL,
         ]);
 
         DB::table('users')->insert([
@@ -35,6 +36,7 @@ class UsersTableSeeder extends Seeder
           'phone' => '1020304050',
           'valid' => 1,
           'type' => 'membre',
+          'rank' => 1,
         ]);
         DB::table('users')->insert([
           'name' => str_random(5),
@@ -47,6 +49,7 @@ class UsersTableSeeder extends Seeder
           'phone' => '1020304050',
           'valid' => 0,
           'type' => 'membre',
+          'rank' => NULL,
         ]);
     }
 }

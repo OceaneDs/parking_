@@ -22,7 +22,7 @@ class User extends Authenticatable
      protected $fillable = array('name', 'first_name',
                                  'email', 'password', 'adress',
                                  'zip_code', 'city', 'phone',
-                                 'valid', 'type');
+                                 'valid', 'type', 'rank');
 
     /**
      * The attributes that should be hidden for arrays.
@@ -36,5 +36,13 @@ class User extends Authenticatable
     public function isAdmin()
     {
       return $this->type === self::ADMIN_TYPE;
+    }
+
+    /**
+    * Get the reservation record associated with the user.
+    */
+    public function reservation()
+    {
+      return $this->hasOne('Parking\Reservation');
     }
 }

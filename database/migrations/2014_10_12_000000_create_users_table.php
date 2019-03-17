@@ -13,7 +13,6 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::dropIfExists('users');
         Schema::create('users', function (Blueprint $table)
         {
             $table->increments('id');
@@ -27,6 +26,7 @@ class CreateUsersTable extends Migration
             $table->integer('phone');
             $table->boolean('valid')->default(0);
             $table->string('type')->default('membre');
+            $table->integer('rank')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
