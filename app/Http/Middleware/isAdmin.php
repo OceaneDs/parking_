@@ -19,7 +19,7 @@ class isAdmin
       {
         return redirect('login');
       }
-      if (auth()->user()->isAdmin())
+      if (Auth::user()-> /*finir 'rang' = 'admin' */)
       {
         return $next($request);
       }

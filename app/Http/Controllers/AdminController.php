@@ -7,7 +7,11 @@ class AdminController extends Controller
 {
     public function __construct()
     {
-      $this->middleware('auth');
+      if (auth()->guest())
+        return redirect('login');
+      if (auth()->user()->)
+        return $next($request);
+      return redirect('home');
     }
 
     public function admin()
