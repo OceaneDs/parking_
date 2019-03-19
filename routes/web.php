@@ -21,10 +21,6 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/Place', 'PlaceController@newPlace');
 
-
-Route::group([ 'middleware' => ['is_admin']],
-function ()
-{
   Route::get('/admin', 'AdminController@admin')
       ->name('admin');
 
@@ -48,4 +44,3 @@ function ()
 
   Route::get('/listPlaces/{place}/disponibilite', 'PlaceController@disponibilite')
       ->name('listPlaces');
-});

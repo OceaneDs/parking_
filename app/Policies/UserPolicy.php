@@ -3,6 +3,7 @@
 namespace Parking\Policies;
 
 use Parking\User;
+use Parking\Controllers;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class UserPolicy
@@ -29,7 +30,7 @@ class UserPolicy
      */
     public function create(User $user)
     {
-        //
+      //
     }
 
     /**
@@ -39,9 +40,18 @@ class UserPolicy
      * @param  \Parking\User  $model
      * @return mixed
      */
-    public function update(User $user, User $model)
+    public function affUpdate(User $user, User $model)
     {
-        //
+      if (auth()->guest())
+      {
+        return redirect('login');
+      }
+      if (Auth::user()->isAdmin())
+      {
+        return true);
+      }
+
+      return false;
     }
 
     /**
