@@ -15,7 +15,7 @@ class isAdmin
      */
     public function handle($request, Closure $next)
     {
-      if (auth()->guest())
+    /*  if (auth()->guest())
       {
         return redirect('login');
       }
@@ -23,7 +23,7 @@ class isAdmin
       {
         return $next($request);
       }
-
+*/
       return redirect('home');
     }
 }

@@ -7,14 +7,8 @@ class AdminController extends Controller
 {
     public function __construct()
     {
+      $this->middleware('is_admin');
 
-      return redirect('home');
-    }
-
-    public function
-
-    public function admin()
-    {
       return view('admin');
     }
 }

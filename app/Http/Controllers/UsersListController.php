@@ -3,6 +3,7 @@
 namespace Parking\Http\Controllers;
 
 use Parking\User;
+use Parking\Http\Policies;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;

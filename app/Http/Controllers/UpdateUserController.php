@@ -20,6 +20,13 @@ class UpdateUserController extends Controller
       ]);
   }
 
+  public function rightUpdate()
+  {
+  $this->authorize('rightUpdate', $user);
+
+      return view('users_list');
+  }
+
   public function update()
   {
     $user = request('user');
