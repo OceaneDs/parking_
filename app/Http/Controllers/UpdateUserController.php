@@ -12,6 +12,7 @@ class UpdateUserController extends Controller
 {
   public function index()
   {
+
     $id = request('user_id');
     $user = User::find($id);
 
@@ -19,16 +20,9 @@ class UpdateUserController extends Controller
       'user'=>$user,
       ]);
   }
-
-  public function rightUpdate()
-  {
-  $this->authorize('rightUpdate', $user);
-
-      return view('users_list');
-  }
-
   public function update()
   {
+
     $user = request('user');
 
     request()->validate([

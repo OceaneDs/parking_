@@ -10,10 +10,11 @@ use Illuminate\Validation\Rule;
 
 class UsersListController extends Controller
 {
-  public function index()
+  public function index(User $user)
   {
-    $users = User::get();
+    $this->authorize('update', $user);
 
+    $users = User::get();
     return view('users_list', compact('users'));
   }
 
@@ -27,11 +28,6 @@ class UsersListController extends Controller
     $user->save();
 
     return redirect('users_list');
-  }
-
-  public function affUpdate(User $user)
-  {
-    return view('update_user', compact('user'));
   }
 
   public function update(User $user)

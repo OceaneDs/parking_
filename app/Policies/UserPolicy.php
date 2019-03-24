@@ -19,7 +19,7 @@ class UserPolicy
      */
     public function view(User $user, User $model)
     {
-        //
+      return $user->isAdmin();
     }
 
     /**
@@ -30,7 +30,7 @@ class UserPolicy
      */
     public function create(User $user)
     {
-      //
+      return true;
     }
 
     /**
@@ -40,9 +40,9 @@ class UserPolicy
      * @param  \Parking\User  $model
      * @return mixed
      */
-    public function rigthUpdate(User $user)
+    public function update(User $user, User $model)
     {
-      return $user->type==='admin';
+      return $user->isAdmin();
     }
 
     /**
@@ -54,7 +54,7 @@ class UserPolicy
      */
     public function delete(User $user, User $model)
     {
-        //
+        return false;
     }
 
     /**
