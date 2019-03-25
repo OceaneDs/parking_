@@ -13,7 +13,7 @@ class UpdateUserController extends Controller
 {
   public function index()
   {
-$this->authorize('update',Auth::user());
+    $this->authorize('update',Auth::user());
     $id = request('user_id');
     $user = User::find($id);
 
