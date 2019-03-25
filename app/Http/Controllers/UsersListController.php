@@ -3,16 +3,18 @@
 namespace Parking\Http\Controllers;
 
 use Parking\User;
+use Parking\Http\Policies;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
 
 class UsersListController extends Controller
 {
-  public function index()
+  public function index(User $user)
   {
-    $users = User::get();
+    $this->authorize('update', $user);
 
+    $users = User::get();
     return view('users_list', compact('users'));
   }
 
@@ -26,11 +28,6 @@ class UsersListController extends Controller
     $user->save();
 
     return redirect('users_list');
-  }
-
-  public function affUpdate(User $user)
-  {
-    return view('update_user', compact('user'));
   }
 
   public function update(User $user)

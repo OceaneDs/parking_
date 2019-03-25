@@ -3,6 +3,7 @@
 namespace Parking\Http\Middleware;
 
 use Closure;
+use Auth;
 
 class isAdmin
 {
@@ -15,15 +16,8 @@ class isAdmin
      */
     public function handle($request, Closure $next)
     {
-      if (auth()->guest())
-      {
-        return redirect('login');
-      }
-      if (auth()->user()->isAdmin())
-      {
+      if (Auth::user()->isAdmin())
         return $next($request);
-      }
-
       return redirect('home');
     }
 }

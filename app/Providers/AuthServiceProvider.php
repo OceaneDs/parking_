@@ -2,6 +2,7 @@
 
 namespace Parking\Providers;
 
+use Parking\User;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
@@ -14,6 +15,8 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         'Parking\Model' => 'Parking\Policies\ModelPolicy',
+        User::class => 'Parking\Policies\UserPolicy',
+
     ];
 
     /**

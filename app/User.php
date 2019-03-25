@@ -9,8 +9,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class User extends Authenticatable
 {
-    const ADMIN_TYPE = 'admin';
-    const DEFAULT_TYPE = 'membre';
 
     use Notifiable;
 
@@ -35,7 +33,7 @@ class User extends Authenticatable
 
     public function isAdmin()
     {
-      return $this->type === self::ADMIN_TYPE;
+      return $this->type === 'admin';
     }
 
     /**

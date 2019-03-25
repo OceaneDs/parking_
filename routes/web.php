@@ -17,6 +17,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/Place', 'PlaceController@newPlace');
 Route::group([ 'middleware' => ['is_admin']],
+
 function ()
 {
   Route::get('/admin', 'AdminController@admin')
@@ -29,6 +30,7 @@ function ()
       ->name('update_user');
   Route::post('/update_user/{user}/affUpdate', 'UsersListController@affUpdate')
       ->name('update_user');
+
   Route::post('/update/{user}/update', 'UsersListController@update')
       ->name('update');
   Route::get('/listPlaces', 'PlaceController@listPlaces')

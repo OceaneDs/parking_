@@ -7,12 +7,6 @@
         <form method="POST" action="{{ route('update', $user) }}">
           @csrf
 
-          @if (session('status'))
-              <div class="alert alert-success" role="alert">
-                  {{ session('status') }}
-              </div>
-          @endif
-
           <div class="form-group row">
               <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nom') }}</label>
               <div class="col-md-6">
