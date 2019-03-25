@@ -19,5 +19,9 @@ class PlacesTableSeeder extends Seeder
               'dispo'=> 0,
               'numéro'=>'2',
           ]);
+      DB::table('places')->insert([
+                'dispo'=> 1,
+                'numéro'=> '3',
+            ]);
     }
 }

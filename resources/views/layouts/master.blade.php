@@ -10,7 +10,9 @@
   <nav class="nav nav-pills nav-fill">
   <a class="nav-item nav-link active" href="{{action("HomeController@index")}}">Accueil</a>
   <a class="nav-item nav-link" href="{{action("PlaceController@listPlaces")}}">Liste des Places</a>
+  <a class="nav-item nav-link" href="{{action("ReservationController@listreservation")}}">Liste des Reservations</a>
   <a class="nav-item nav-link" href="#">Link</a>
+
 </nav>
 @yield('content')
 

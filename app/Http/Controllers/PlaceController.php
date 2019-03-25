@@ -22,7 +22,8 @@ class PlaceController extends Controller
     $places = Place::all();
     return view('place',['places'=> $places]);
   }
-  
+
+
   public function disponibilite(Place $place)
   {
     if($place->dispo)

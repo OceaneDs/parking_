@@ -3,6 +3,7 @@
 namespace Parking;
 
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Reservation extends Model
 {
@@ -24,5 +25,15 @@ class Reservation extends Model
   public function place()
   {
     return $this->belongsTo('Parking\Place');
+  }
+  public function checkReservation(Reservation $reservation)
+
+  {
+    $reservation = Reservation::all();
+    $dt1= Carbon::now();
+    $dt2= Reservation::all()->date_fin;
+    if($dt1->gt($dt2))
+      return true;
+
   }
 }

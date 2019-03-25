@@ -13,11 +13,10 @@ class CreateReservationTable extends Migration
      */
     public function up()
     {
-        Schema::create('reservation', function (Blueprint $table)
+        Schema::create('reservations', function (Blueprint $table)
         {
             $table->increments('id');
-            $table->date('date');
-            $table->integer('duree');
+            $table->date('date_fin');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->integer('place_id')->unsigned();
@@ -33,6 +32,6 @@ class CreateReservationTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('reservation');
+        Schema::dropIfExists('reservations');
     }
 }

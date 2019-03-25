@@ -11,9 +11,8 @@ class ReservationTableSeeder extends Seeder
      */
     public function run()
     {
-      DB::table('reservation')->insert([
-        'date' => '2010-10-10',
-        'duree' => 30,
+      DB::table('reservations')->insert([
+        'date_fin' => '2019-10-10',
         'user_id' => 2,
         'place_id' => 2,
       ]);
