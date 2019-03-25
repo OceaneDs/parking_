@@ -7,12 +7,13 @@ use Illuminate\Support\Facades\DB;
 use Parking\User;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
+use Auth;
 
 class UpdateUserController extends Controller
 {
   public function index()
   {
-
+$this->authorize('update',Auth::user());
     $id = request('user_id');
     $user = User::find($id);
 

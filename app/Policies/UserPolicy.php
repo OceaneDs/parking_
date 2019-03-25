@@ -40,7 +40,7 @@ class UserPolicy
      * @param  \Parking\User  $model
      * @return mixed
      */
-    public function update(User $user, User $model)
+    public function update(User $user)
     {
       return $user->isAdmin();
     }
