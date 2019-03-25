@@ -15,11 +15,15 @@ Route::get('/', function ()
 });
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/create', 'ReservationController@create');
+Route::post('/store', 'ReservationController@store');
 Route::get('/Place', 'PlaceController@newPlace');
 Route::group([ 'middleware' => ['is_admin']],
 
 function ()
 {
+  Route::get('/listReservations', 'ReservationController@listreservation')
+     ->name('listReservations');
   Route::get('/admin', 'AdminController@admin')
       ->name('admin');
   Route::get('/users_list', 'UsersListController@index')
