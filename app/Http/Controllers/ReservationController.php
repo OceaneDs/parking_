@@ -25,11 +25,11 @@ class ReservationController extends Controller
       return view('create');
     }
 
-    public function store(Reservation $reservation)
+    public function store(Place $place)
     {
       $dtnow =  Carbon::now();
       $datefin = $dtnow->addMonth();
-      if($reservation->checkReservation())
+      if($place->estdispo())
       {
       $reservation = new Reservation();
       $reservation->date_fin = $datefin;

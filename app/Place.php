@@ -17,11 +17,9 @@ class Place extends Model
   public function estdispo()
   {
     $places = Place::all();
-
+    foreach ($places as $place)
     if($place->dispo)
-          return $places->id;
-        else
-          return false;
+          return true;
   }
 
 }
