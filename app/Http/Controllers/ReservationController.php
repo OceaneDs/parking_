@@ -17,27 +17,29 @@ class ReservationController extends Controller
     }
     public function index()
     {
-      //
+      return view('create');
+
     }
+
 
     public function create()
     {
-      return view('create');
-    }
 
-    public function store(Place $place)
-    {
       $dtnow =  Carbon::now();
       $datefin = $dtnow->addMonth();
-      if($place->estdispo())
-      {
-      $reservation = new Reservation();
-      $reservation->date_fin = $datefin;
-      $reservation->user_id  = Auth::user()->id;
-      $reservation->place_id  = 1;
+      $user = Auth::id();
+        $place = Place::where('dispo', TRUE)->first();
 
-      $reservation->save();
-      }
-      return redirect('users_list');
+        if(!empty($place)){
+    Reservation::create(['date_fin'=> $datefin,'user_id'=> $user ,'place_id'=> $place->id,]);
+
+        }
+        else {
+          echo "Aucune Place disponible";
+        }
+        return view('home');
     }
+
+
+
 }

@@ -15,8 +15,8 @@ Route::get('/', function ()
 });
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/create', 'ReservationController@create')->name('create');
-Route::post('/store', 'ReservationController@store');
+Route::get('/create', 'ReservationController@index')->name('create');
+Route::get('/creation', 'ReservationController@create')->name('creation');
 Route::get('/Place', 'PlaceController@newPlace');
 Route::group([ 'middleware' => ['is_admin']],
 
