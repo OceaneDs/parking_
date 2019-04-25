@@ -1,31 +1,28 @@
-@extends('layouts.master')
+@extends('layouts.app')
 
 @section('content')
-<h1>Liste des reservations :</h1>
-<div class="col-md-6">
+<div class="container">
+<div class="row justify-content-center">
+<div class="col-md-8">
+<div class="card-header">Liste des réservations</div>
 
-        <table class="table table-dark">
-          <thead>
-            <tr>
-              <td>id reservation </td>
-              <td>Date début:</td>
-              <td>Date fin:</td>
-              <td>ID utilisateur:</td>
-              <td>ID Place:</td>
+<?php foreach ($reservations as $reservation): ?>
+<div class="card">
+  <br>
+  Id reservation : {{$reservation->id}}
+  <br>
+  Date début: {{ $reservation->created_at }}
+  <br>
+  Date_fin : {{ $reservation->date_fin }}
+  <br>
+  ID Utilisateur : {{$reservation->user_id }}
+  <br>
+  ID Place : {{ $reservation->place_id }}
 
-            </tr>
-          </thead>
-          <tbody>
-            <?php foreach ($reservations as $reservation): ?>
-          <tr>
-            <td>{{$reservation->id}}</td>
-            <td>{{$reservation->created_at}}</td>
-            <td>{{$reservation->date_fin}}</td>
-            <td>{{$reservation->user_id}}</td>
-            <td>{{$reservation->place_id}}</td>
+  <?php endforeach; ?>
+</div>
+</div>
+</div>
+</div>
 
-          </tr>
-        </tbody>
-    <?php endforeach; ?>
-  </div>
 @endsection

@@ -18,6 +18,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/create', 'ReservationController@index')->name('create');
 Route::get('/creation', 'ReservationController@create')->name('creation');
 Route::get('/Place', 'PlaceController@newPlace');
+
+
 Route::group([ 'middleware' => ['is_admin']],
 
 function ()

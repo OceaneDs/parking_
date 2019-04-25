@@ -32,7 +32,7 @@ class ReservationController extends Controller
 
         if(!empty($place)){
     Reservation::create(['date_fin'=> $datefin,'user_id'=> $user ,'place_id'=> $place->id,]);
-
+    $place->dispo = false; 
         }
         else {
           echo "Aucune Place disponible";

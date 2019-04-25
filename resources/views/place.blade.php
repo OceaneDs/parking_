@@ -1,29 +1,24 @@
-@extends('layouts.master')
+@extends('layouts.app')
 
 @section('content')
-<h1>Liste des places :</h1>
-<div class="col-md-5">
+<div class="container">
+<div class="row justify-content-center">
+<div class="col-md-8">
+<div class="card-header">Liste des places</div>
 
-        <table class="table table-dark">
-          <thead>
-            <tr>
-              <td>Place N: </td>
-              <td>Action:</td>
-            </tr>
-          </thead>
-          <tbody>
-            <?php foreach ($places as $place): ?>
-          <tr>
-            <td>{{$place->numéro}}</td>
-            <td>
-              @if ($place->dispo)
-                <a class="text-success"  href="{{ route('listPlaces', $place) }}" > Disponible </a>
-              @else
-                <a class="text-danger"  href="{{ route('listPlaces', $place) }}" > Indisponible </a>
-              @endif
-            </td>
-          </tr>
-        </tbody>
+    <?php foreach ($places as $place): ?>
+      <br>
+      Place N: {{ $place->numéro }}
+
+      <h5>
+        @if ($place->dispo)
+          <a class="text-success"  href="{{ route('listPlaces', $place) }}" > Disponible </a>
+        @else
+          <a class="text-danger"  href="{{ route('listPlaces', $place) }}" > Indisponible </a>
+        @endif
+      </h5>
     <?php endforeach; ?>
+  </div>
+  </div>
   </div>
 @endsection
