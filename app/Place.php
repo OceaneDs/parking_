@@ -3,7 +3,7 @@
 namespace Parking;
 
 use Illuminate\Database\Eloquent\Model;
-
+use DB;
 class Place extends Model
 {
 
@@ -19,7 +19,16 @@ class Place extends Model
     $places = Place::all();
     foreach ($places as $place)
     if($place->dispo)
-          return true;
+    DB::table('places')
+          ->where('id',$place->id)
+          ->update(['dispo'=> 0]);
+    else {
+      DB::table('places')
+            ->where('id',$place->id)
+            ->update(['dispo'=> 1]);
+    }
+    return $place;
+
   }
 
 }

@@ -9,7 +9,8 @@
     <?php foreach ($places as $place): ?>
       <br>
       Place N: {{ $place->numéro }}
-
+      <br>
+      Disponibilité : {{$place->dispo}}
       <h5>
         @if ($place->dispo)
           <a class="text-success"  href="{{ route('listPlaces', $place) }}" > Disponible </a>

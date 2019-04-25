@@ -1,6 +1,7 @@
 <?php
 
 namespace Parking\Http\Controllers;
+use DB;
 use Auth;
 use Parking\Place;
 use Parking\Reservation;
@@ -28,11 +29,14 @@ class ReservationController extends Controller
       $dtnow =  Carbon::now();
       $datefin = $dtnow->addMonth();
       $user = Auth::id();
-        $place = Place::where('dispo', TRUE)->first();
+      $place = Place::where('dispo', TRUE)->first();
 
-        if(!empty($place)){
+        if(!empty($place))
+        {
     Reservation::create(['date_fin'=> $datefin,'user_id'=> $user ,'place_id'=> $place->id,]);
-    $place->dispo = false; 
+    DB::table('places')
+          ->where('id',$place->id)
+          ->update(['dispo'=> 0]);
         }
         else {
           echo "Aucune Place disponible";
