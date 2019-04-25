@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-        <form method="POST" action="{{ route('update', $user) }}">
+        <form method="POST" action="{{ route('user.update', $user) }}">
           @csrf
 
           <div class="form-group row">

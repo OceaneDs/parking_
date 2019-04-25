@@ -24,21 +24,27 @@ Route::group([ 'middleware' => ['is_admin']],
 
 function ()
 {
-  Route::get('/listReservations', 'ReservationController@listreservation')
-     ->name('listReservations');
+
+  // Controller administrateur
   Route::get('/admin', 'AdminController@admin')
       ->name('admin');
+  // Index de gestion d'utilisateurs
   Route::get('/users_list', 'UsersListController@index')
       ->name('users_list');
+      //Gestion de la validation
   Route::get('/users_list/{user}/validation', 'UsersListController@validation')
-      ->name('userValid');
-  Route::get('/update_user/{user}/affUpdate', 'UsersListController@affUpdate')
-      ->name('update_user');
-  Route::post('/update_user/{user}/affUpdate', 'UsersListController@affUpdate')
-      ->name('update_user');
+      ->name('user.valid');
+      // Affichage pour la modification
+  Route::get('/update_user/{user}/edit', 'UpdateUserController@edit')
+      ->name('user.edit');
+  Route::post('/update_user/{user}/edit', 'UpdateUserController@edit')
+      ->name('user.edit');
+      // Mise à jour
+  Route::post('/update/{user}/update', 'UpdateUserController@update')
+      ->name('user.update');
 
-  Route::post('/update/{user}/update', 'UsersListController@update')
-      ->name('update');
+  Route::get('/listReservations', 'ReservationController@listreservation')
+     ->name('listReservations');
   Route::get('/listPlaces', 'PlaceController@listPlaces')
       ->name('/listPlaces');
   Route::get('/listPlaces/{place}/disponibilite', 'PlaceController@disponibilite')

@@ -42,13 +42,13 @@
 
                       <h5>
                       @if ($user->valid)
-                        <a class="text-success"  href="{{ route('userValid', $user) }}" > Validé </a>
+                        <a class="text-success"  href="{{ route('user.valid', $user) }}" > Validé </a>
 
                       @else
-                        <a class="text-muted" href="{{ route('userValid', $user->id) }}" > Non Validé </a>
+                        <a class="text-muted" href="{{ route('user.valid', $user->id) }}" > Non Validé </a>
                       @endif
 
-                      <a href="{{ route('update_user', $user) }}"> Modifier </a>
+                      <a href="{{ route('user.edit', $user) }}"> Modifier </a>
                       </h5> <br>
                     @endforeach
 
