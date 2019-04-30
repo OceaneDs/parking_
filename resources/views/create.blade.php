@@ -3,7 +3,7 @@
 @section('content')
 <div class="card-body">
 @csrf
-    <a class="text-success"  href="{{ route('creation') }}" > Reservation place </a>
+  <h2><center>  <a class="text-success"  href="{{ route('creation') }}" > Reserver une place </a></center></h2>
 
 </div>
 

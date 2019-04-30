@@ -9,8 +9,6 @@
 <?php foreach ($reservations as $reservation): ?>
 <div class="card">
   <br>
-  Id reservation : {{$reservation->id}}
-  <br>
   Date début: {{ $reservation->created_at }}
   <br>
   Date_fin : {{ $reservation->date_fin }}

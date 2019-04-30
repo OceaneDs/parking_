@@ -15,6 +15,7 @@ Route::get('/', function ()
 });
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/Historique', 'ReservationController@historique')->name('Historique');
 Route::get('/create', 'ReservationController@index')->name('create');
 Route::get('/creation', 'ReservationController@create')->name('creation');
 Route::get('/Place', 'PlaceController@newPlace');

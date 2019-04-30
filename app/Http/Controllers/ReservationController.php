@@ -16,6 +16,10 @@ class ReservationController extends Controller
       $reservations = Reservation::all();
       return view('listreservation',['reservations'=> $reservations]);
     }
+    public function historique()
+    {
+      return view('Historique');
+    }
     public function index()
     {
       return view('create');
@@ -43,6 +47,7 @@ class ReservationController extends Controller
         }
         return view('home');
     }
+
 
 
 
