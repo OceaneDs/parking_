@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    Tu es connecté!
+                  @include('flash::message')
                 </div>
             </div>
         </div>

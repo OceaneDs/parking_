@@ -20,7 +20,6 @@ Route::get('/create', 'ReservationController@index')->name('create');
 Route::get('/creation', 'ReservationController@create')->name('creation');
 Route::get('/Place', 'PlaceController@newPlace');
 
-
 Route::group([ 'middleware' => ['is_admin']],
 
 function ()
@@ -50,4 +49,17 @@ function ()
       ->name('/listPlaces');
   Route::get('/listPlaces/{place}/disponibilite', 'PlaceController@disponibilite')
       ->name('listPlaces');
+
+  // Affiche la liste d'attente
+  Route::get('/waitingList/edit', 'WaitingListController@edit')
+      ->name('waitingList.edit');
+
+  // Mise à jour de l'odre des positions de la liste d'attente
+  Route::post('/waitingList/{user}/update', 'WaitingListController@update')
+      ->name('waitingList.update');
+
+  // Supprime un utilisateur de la liste d'attente
+  Route::get('/waitingList/{user}/delete', 'WaitingListController@destroy')
+      ->name('waitingList.delete');
+
 });

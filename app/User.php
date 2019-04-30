@@ -41,6 +41,43 @@ class User extends Authenticatable
     */
     public function reservation()
     {
-      return $this->hasOne('Parking\Reservation');
+      return $this->hasMany('Parking\Reservation');
     }
+
+    public function leaveRank()
+   {
+       if( !empty($this->rank) )
+       {
+           User::whereNotNull('rank')
+               ->where('rank', '>', $this->rank)
+               ->decrement('rank', 1);
+           $this->rank = NULL;
+           $this->save();
+       }
+   }
+
+   public function joinRank()
+    {
+        if( empty($this->rank) )
+        {
+          $this->rank = 0 + User::max('rank') + 1;
+          $this->save();
+          flash('Aucune place de disponible pour le moment, vous avez été placé en liste d attente. Vous êtes au rang '.$this->rank)->important();
+        }
+        else
+          flash('Vous avez déjà fait une demande et avez été placé en liste d attente. Vous êtes au rang '.$this->rank);
+    }
+
+    public function updateRank($rank)
+   {
+       if( empty($this->rank) )
+       {
+         $this->leaveRank();
+         User::whereNotNull('rank')
+             ->where('rank', '>=', $rank)
+             ->increment('rank', 1);
+         $this->rank = $rank;
+         $this->save();
+       }
+   }
 }
