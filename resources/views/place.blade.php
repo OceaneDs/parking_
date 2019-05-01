@@ -26,8 +26,8 @@
               @endif
             </h5>
           </td>
-          <td> <?php $str = $place->created_at ?> {{date("d/m/Y", strtotime($str))}} </td>
-          <td> <?php $str = $place->updated_at ?> {{date("d/m/Y", strtotime($str))}} </td>
+          <td> {{Carbon\Carbon::parse($place->created_at)->format('d/m/Y')}} </td>
+          <td> {{Carbon\Carbon::parse($place->updated_at)->format('d/m/Y')}} </td>
         </tbody>
         @endforeach
     </div>

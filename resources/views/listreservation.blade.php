@@ -20,8 +20,8 @@
           <td> {{ $reservation->user->name }} </td>
           <td> {{ $reservation->user->first_name }}</td>
           <td> {{ $reservation->place->numéro }} </td>
-          <td> <?php $str = $reservation->created_at ?> {{date("d/m/Y", strtotime($str))}} </td>
-          <td> <?php $str = $reservation->date_fin ?> {{date("d/m/Y", strtotime($str))}} </td>
+          <td> {{Carbon\Carbon::parse($reservation->created_at)->format('d/m/Y')}} </td>
+          <td> {{Carbon\Carbon::parse($reservation->date_fin)->format('d/m/Y')}} </td>
         </tbody>
         @endforeach
       </table>

@@ -43,8 +43,8 @@
             <a href="{{ route('user.edit', $user) }}"> Modifier </a>
             </h5>
           </td>
-          <td> <?php $str = $user->created_at ?> {{date("d/m/Y", strtotime($str))}} </td>
-          <td> <?php $str = $user->updated_at ?> {{date("d/m/Y", strtotime($str))}} </td>
+          <td> {{Carbon\Carbon::parse($user->created_at)->format('d/m/Y')}} </td>
+          <td> {{Carbon\Carbon::parse($user->updated_at)->format('d/m/Y')}} </td>
         </tbody>
         @endforeach
       </table>

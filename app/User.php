@@ -41,7 +41,12 @@ class User extends Authenticatable
     */
     public function reservation()
     {
-      return $this->hasMany('Parking\Reservation');
+      return $this->hasMany('Parking\Reservation')->orderBy('created_at', 'desc');
+    }
+
+    public function reservationNow()
+    {
+      return $this->reservation()->first();
     }
 
     public function leaveRank()

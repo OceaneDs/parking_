@@ -43,6 +43,6 @@ class ReservationController extends Controller
           $user = Auth::user();
           $user->joinRank();
         }
-        return view('home');
+        return redirect('home');
     }
 }
