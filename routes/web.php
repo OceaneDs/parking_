@@ -46,7 +46,7 @@ function ()
   Route::get('/listReservations', 'ReservationController@listreservation')
      ->name('listReservations');
   Route::get('/listPlaces', 'PlaceController@listPlaces')
-      ->name('/listPlaces');
+      ->name('listPlace');
   Route::get('/listPlaces/{place}/disponibilite', 'PlaceController@disponibilite')
       ->name('listPlaces');
 

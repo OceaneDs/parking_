@@ -2,59 +2,53 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Liste des utilisateurs</div>
+  <div class="row justify-content-center">
+    <h2>Liste des utilisateurs</h2>
+    <div class="table-responsive-md">
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Nom</th>
+            <th scope="col">Prénom</th>
+            <th scope="col">Email</th>
+            <th scope="col">Adresse</th>
+            <th scope="col">Code Postal</th>
+            <th scope="col">Ville</th>
+            <th scope="col">Numéros de téléphone</th>
+            <th scope="col">Type</th>
+            <th scope="col">Option</th>
+            <th scope="col">Créé le</th>
+            <th scope="col">Dernière Modification</th>
+          </tr>
+        </thead>
+        @foreach ($users as $user)
+        <tbody>
+          <td> {{ $user->name }} </td>
+          <td> {{ $user->first_name }} </td>
+          <td> {{ $user->email }} </td>
+          <td> {{ $user->adress }} </td>
+          <td> {{ $user->zip_code }} </td>
+          <td> {{ $user->city }} </td>
+          <td> {{ $user->phone }} </td>
+          <td> {{ $user->type }} </td>
+          <td>
+            <h5>
+            @if ($user->valid)
+              <a class="text-success"  href="{{ route('user.valid', $user) }}" > Validé </a>
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+            @else
+              <a class="text-muted" href="{{ route('user.valid', $user->id) }}" > Non Validé </a>
+            @endif
 
-                    @foreach ($users as $user)
-                    --------------------------------------------------------
-                      <br>
-                      Identifiant : {{ $user->id }}
-                      <br>
-                      Nom : {{ $user->name }}
-                      <br>
-                      Prénom : {{ $user->first_name }}
-                      <br>
-                      email : {{ $user->email }}
-                      <br>
-                      Adresse : {{ $user->adress }}
-                      <br>
-                      Code Postal : {{ $user->zip_code }}
-                      <br>
-                      Ville : {{ $user->city }}
-                      <br>
-                      Numéros de téléphone : {{ $user->phone }}
-                      <br>
-                      Rang : {{ $user->type }}
-                      <br>
-                      Créé le <?php $str = $user->created_at ?> {{date("d/m/Y", strtotime($str))}}
-                      <br>
-                      Dernière modification le <?php $str = $user->updated_at ?> {{date("d/m/Y", strtotime($str))}}
-                      <br>
-
-                      <h5>
-                      @if ($user->valid)
-                        <a class="text-success"  href="{{ route('user.valid', $user) }}" > Validé </a>
-
-                      @else
-                        <a class="text-muted" href="{{ route('user.valid', $user->id) }}" > Non Validé </a>
-                      @endif
-
-                      <a href="{{ route('user.edit', $user) }}"> Modifier </a>
-                      </h5> <br>
-                    @endforeach
-
-                </div>
-            </div>
-        </div>
+            <a href="{{ route('user.edit', $user) }}"> Modifier </a>
+            </h5>
+          </td>
+          <td> <?php $str = $user->created_at ?> {{date("d/m/Y", strtotime($str))}} </td>
+          <td> <?php $str = $user->updated_at ?> {{date("d/m/Y", strtotime($str))}} </td>
+        </tbody>
+        @endforeach
+      </table>
     </div>
+  </div>
 </div>
 @endsection
