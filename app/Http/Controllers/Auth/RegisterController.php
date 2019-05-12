@@ -77,7 +77,7 @@ class RegisterController extends Controller
             'zip_code' => $data['zip_code'],
             'city' => $data['city'],
             'phone' => $data['phone'],
-            'type' => User::DEFAULT_TYPE,
+            'type' => 'membre',
         ]);
     }
 }
