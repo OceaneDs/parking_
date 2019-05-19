@@ -15,7 +15,6 @@ Route::get('/', function ()
 });
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/Historique', 'ReservationController@historique')->name('Historique');
 Route::get('/create', 'ReservationController@index')->name('create');
 Route::get('/creation', 'ReservationController@create')->name('creation');
 Route::get('/Place', 'PlaceController@newPlace');
@@ -24,7 +23,12 @@ Route::group([ 'middleware' => ['is_admin']],
 
 function ()
 {
-
+  // Historique des reservations
+  Route::get('/Historique', 'ReservationController@historique')
+      ->name('Historique');
+  // Créer une nouvelle places
+  Route::get('/createPlace', 'PlaceController@newPlace')
+      ->name('createPlace');
   // Controller administrateur
   Route::get('/admin', 'AdminController@admin')
       ->name('admin');

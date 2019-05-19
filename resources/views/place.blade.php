@@ -2,8 +2,8 @@
 
 @section('content')
 <div class="container">
+  <h2><center>Liste des places:</center></h2>
   <div class="row justify-content-center">
-    <h2>Liste des places</h2>
     <div class="table-responsive-md">
       <table class="table">
         <thead class="thead-dark">
@@ -30,7 +30,13 @@
           <td> {{Carbon\Carbon::parse($place->updated_at)->format('d/m/Y')}} </td>
         </tbody>
         @endforeach
+        <div class="card-body">
+        @csrf
+
+        </div>
     </div>
   </div>
+<p><h4>  <a class="text-success"  href="{{ route('createPlace') }}" > Créer une nouvelle place </a></h4></p>  
 </div>
+
 @endsection

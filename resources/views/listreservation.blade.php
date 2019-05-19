@@ -2,8 +2,8 @@
 
 @section('content')
 <div class="container">
+  <h2><center>Liste des réservations:</center></h2>
   <div class="row justify-content-center">
-    <h2>Liste des réservations</h2>
     <div class="table-responsive-md">
       <table class="table">
         <thead class="thead-dark">

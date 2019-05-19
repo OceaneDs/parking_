@@ -64,11 +64,13 @@
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
-                                    <a class="dropdown-item" href="{{ route('create') }}">{{ __('Faire une réservation') }}</a>
                                     <a class="dropdown-item" href="{{ route('home') }}">{{ __('Accueil') }}</a>
+                                    <a class="dropdown-item" href="{{ route('create') }}">{{ __('Faire une réservation') }}</a>
+
 
                                     @if(Auth::user()->isAdmin())
                                       <a class="dropdown-item" href="{{ route('users_list') }}">{{ __('Liste des utilisateurs') }}</a>
+                                      <a class="dropdown-item" href="{{ route('Historique') }}">{{ __('Historique des reservations') }}</a>
                                       <a class="dropdown-item" href="{{ route('listPlace') }}">{{ __('Liste des places') }}</a>
                                       <a class="dropdown-item" href="{{ route('listReservations') }}">{{ __('Liste des Réservations') }}</a>
                                       <a class="dropdown-item" href="{{ route('waitingList.edit') }}">{{ __('Liste d Attente') }}</a>

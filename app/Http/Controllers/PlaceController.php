@@ -11,10 +11,13 @@ class PlaceController extends Controller
 {
   public function newPlace()
   {
+
     $newPlace = new Place();
     $newPlace->dispo = true;
-    $newPlace->numéro = '1';
+    $newPlace->numéro = 4;
     $newPlace->save();
+
+    return redirect('listPlaces');
   }
 
   public function listPlaces()
