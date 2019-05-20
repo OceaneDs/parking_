@@ -22,10 +22,12 @@ class Reservation extends Model
   {
     return $this->belongsTo('Parking\User');
   }
+  
   public function place()
   {
     return $this->belongsTo('Parking\Place');
   }
+
   public function checkReservation(Reservation $reservation)
 
   {

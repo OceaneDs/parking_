@@ -23,17 +23,15 @@ class PlaceController extends Controller
   public function listPlaces()
   {
     $places = Place::all();
+    $places = $places->sortByDesc(function ($place, $key) {
+    return $place->reservation->count();
+    });
     return view('place',['places'=> $places]);
   }
 
-
   public function disponibilite(Place $place)
   {
-    if($place->dispo)
-    $place->dispo = false;
-    else
-    $place->dispo = true;
-
+    $place->dispo = !$place->dispo;
     $place ->save();
      return redirect('listPlaces');
   }

@@ -9,6 +9,7 @@
         <thead class="thead-dark">
           <tr>
             <th scope="col">Numéro de la place</th>
+            <th scope="col">Nombre de réservation</th>
             <th scope="col">Option</th>
             <th scope="col">Créé le</th>
             <th scope="col">Dernière modification le</th>
@@ -17,6 +18,7 @@
         @foreach ($places as $place)
         <tbody>
           <td> {{ $place->numéro }} </td>
+          <td> {{ $place-> reservation->count() }} </td>
           <td>
             <h5>
               @if ($place->dispo)
@@ -36,7 +38,7 @@
         </div>
     </div>
   </div>
-<p><h4>  <a class="text-success"  href="{{ route('createPlace') }}" > Créer une nouvelle place </a></h4></p>  
+<p><h4>  <a class="text-success"  href="{{ route('createPlace') }}" > Créer une nouvelle place </a></h4></p>
 </div>
 
 @endsection

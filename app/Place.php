@@ -13,7 +13,12 @@ class Place extends Model
   {
     return $this->hasMany('Parking\Reservation');
   }
-
+/*
+  public function place
+  {
+    return $this->hasMany('Parking\Reservation');
+  }
+*/
   public function estdispo()
   {
     $places = Place::all();
